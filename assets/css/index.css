@@ -1,0 +1,280 @@
+html {
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+main.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    background-image: url('../images/login-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+.darkoverlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+img.logo {
+    height: 200px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefef;
+    /*height: 300px;*/
+    padding: 50px;
+    border-radius: 10px;
+    /*border-left: 5px solid black;*/
+    /*border-right: 5px solid black;*/
+    z-index: 3;
+    background-image: url('../images/form-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 50px black;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-left: 50px;
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-container form input, select {
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.registration-form-container  form  label {
+
+}
+
+select {
+    width: 100%;
+    border-radius: 10px;
+    margin: 5px 0px;
+}
+
+
+
+.form-container form label {
+    font-family: 'Roboto', sans-serif;
+    padding: 5px 0px;
+}
+
+.form-container form button, button.logout {
+    height: 50px;
+    border-radius: 10px;
+    background-color: orange;
+    text-transform: uppercase;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #644a06;
+}
+
+.form-container form a {
+    text-decoration: none;
+    padding: 10px 0px;
+    font-size: 0.75rem;
+    align-self: flex-end;
+}
+
+.form-container form a:hover {
+    color: blue;
+}
+
+.register-link {
+    color: white;
+    z-index: 3;
+    font-size: 0.75rem;
+    padding: 10px;
+}
+
+.register-link a {
+    color: yellow;
+}
+
+main.register {
+    background-image: url('../images/form-bg.jpg');
+    background-size: cover;
+    padding: 0px;
+    margin: 0px;
+    /*background-color: blue;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
+    padding: 50px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.registration-form-container {
+    /*width: 30%;*/
+    background-color: rgba(200, 200, 200, 0.7);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #434343;
+}
+
+.registration-form-container form {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+
+}
+
+.registration-form-container input {
+    padding: 10px;
+    margin: 5px 0px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+main.register h1 {
+    font-size: 3rem;
+    padding: 10px;
+}
+
+.form-introduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    width: 500px;
+}
+
+.form-grid {
+    width: 500px;
+}
+
+.form-introduction .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-introduction .logo img {
+    height: 200px;
+    width: 200px;
+}
+
+.registration-form-container button {
+    width: 100%;
+    height: 50px;
+    margin: 20px 0px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    background-color: orangered;
+    color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.registration-form-container button:hover {
+    background-color: orange;
+}
+
+nav img {
+    height: 75px;
+}
+
+header, nav {
+    width: 100%;
+    background-color: orangered;
+}
+
+nav, nav .logo {
+    display: flex;
+    flex-direction: row;
+}
+
+nav .logo {
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+nav .logo h1 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px 25px;
+    color: white;
+}
+
+
+
+footer {
+    height: 150px;
+    width: 100vw;
+    background-color: orangered;
+    bottom: 0px;
+}
+
+main.profile {
+    background-image: url('../images/profile-bg-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+}
+
+p.error {
+    color: red;
+    /*text-transform: uppercase;*/
+    font-size: 0.9rem;
+    padding: 20px 0px;
+}
+
+.profile-container {
+
+}
+
+
