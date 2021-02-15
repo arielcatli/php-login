@@ -97,7 +97,7 @@ main.profile {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 250px;
+    width: 300px;
     /*background-color: gray;*/
     padding: 10px;
 }
@@ -105,7 +105,7 @@ main.profile {
 p.details {
     text-transform: uppercase;
     color: orange;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 p.label {
@@ -138,7 +138,7 @@ p.label {
 
 main.edit {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -178,6 +178,18 @@ main.edit {
     color: orangered;
     font-size: 3rem;
     padding: 20px 0px;
+}
+
+a.back {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+    align-self: flex-start;
+
+}
+
+a.back:hover {
+    color: darkgoldenrod;
 }
 
 

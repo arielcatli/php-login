@@ -17,13 +17,23 @@
        $SQL_RESULT = $connection->query($SQL_CHECK_USER_LOGIN);
 
        if ($SQL_RESULT->num_rows > 0) {
-
+           $profile = $SQL_RESULT->fetch_assoc();
            $_SESSION['loggedin'] = true;
            $_SESSION['username'] = $username;
 
-           # TODO: record login details here.
+           $profile_id = $profile['id'];
+           $now = new DateTime();
+           $now->setTimezone(new DateTimeZone('Asia/Taipei'));
+           $logged_in = $now->format('Y-m-d H:i:s');
+           $SQL_ADD_TO_LOGIN_HISTORY = "INSERT INTO dhvsu_app.login_history (user_id, logged_in) VALUES ('$profile_id', '$logged_in')";
+           $write_result = $connection->query($SQL_ADD_TO_LOGIN_HISTORY);
 
-           header('Location: /app/profile.php');
+           if($write_result) {
+	           header('Location: /app/profile.php');
+           } else {
+               header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+           }
+
        }
        else {
            $login_error = 'Invalid email or password.';

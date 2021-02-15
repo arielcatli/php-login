@@ -1,14 +1,39 @@
 <?php
+    require_once './functions.php';
     session_start();
 
     if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+        echo('I am still loggedin');
         header('Location: /app');
+    }
+
+//    Load profile
+    $username = $_SESSION['username'];
+    $SQL_GET_PROFILE = "SELECT * FROM dhvsu_app.user WHERE username = '$username'";
+    $result = $connection->query($SQL_GET_PROFILE);
+
+    if($result->num_rows > 0) {
+        $profile = $result->fetch_assoc();
+    } else {
+        header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+    }
+
+//    Get all the login history records
+
+    $user_id = $profile['id'];
+    $SQL_GET_LOGIN_HISTORY = "SELECT * FROM dhvsu_app.login_history WHERE user_id = '$user_id'";
+    $results_records = $connection->query($SQL_GET_LOGIN_HISTORY);
+
+    $records = array();
+    while($row = $results_records->fetch_assoc()) {
+        $records[] = $row;
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(htmlentities($_POST['logout'])) {
             unset($_SESSION['loggedin']);
             unset($_SESSION['username']);
+            session_destroy();
             header('Location: /app');
         }
     }
@@ -23,13 +48,13 @@
         <img src="/app/assets/images/avatar.png" alt="">
         <div class="information">
             <p class="label">Name</p>
-            <p class="name">Jerome Maglaqui Catli</p>
+            <p class="name"><?=$profile['first_name']?> <?=$profile['middle_name']?> <?=$profile['last_name']?></p>
             <p class="label">Address</p>
-            <p class="address">591 San Juan, San Luis, Pampanga 2014</p>
+            <p class="address"><?=$profile['address']?>, <?=$profile['city']?>, <?=$profile['province']?> <?=$profile['zip']?></p>
             <p class="label">Gender</p>
-            <p class="gender">Male</p>
+            <p class="gender"><?=$profile['gender'] == 'M' ? 'Male' : 'Female';?></p>
             <p class="label">Phone Number</p>
-            <p class="phone">+639777784451</p>
+            <p class="phone"><?=$profile['phone']?></p>
             <form action="" method="POST">
                 <input type="hidden" name="logout" value="true">
                 <button>Logout</button>
@@ -40,155 +65,19 @@
     <div class="content">
         <h2>Login History</h2>
         <div class="login-history">
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
 
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
+            <?php foreach ($records as $record):
+                    $date = DateTime::createFromFormat('Y-m-d H:i:s', $record['logged_in']);
+                    $logged_in = $date->format('F j, Y h:i:s A');
+                ?>
+                <div class="record">
+                    <p class="details">Details</p>
+                    <p class="datetime"><?=$logged_in?></p>
+                </div>
+            <?php endforeach; ?>
 
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
 
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
 
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
-
-            <div class="record">
-                <p class="details">Details</p>
-                <p class="datetime">February 14, 2021 9:52 AM</p>
-            </div>
         </div>
     </div>
 </main>
