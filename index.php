@@ -6,6 +6,7 @@
 
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	    header('Location: /app/profile.php');
+	    exit();
     }
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,8 +31,10 @@
 
            if($write_result) {
 	           header('Location: /app/profile.php');
+	           exit();
            } else {
                header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+               exit();
            }
 
        }

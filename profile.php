@@ -2,9 +2,10 @@
     require_once './functions.php';
     session_start();
 
-    if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-        echo('I am still loggedin');
+    if(!(isset($_SESSION['loggedin']))) {
+        print(!(isset($_SESSION['loggedin'])));
         header('Location: /app');
+        exit();
     }
 
 //    Load profile
@@ -16,6 +17,7 @@
         $profile = $result->fetch_assoc();
     } else {
         header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+        exit();
     }
 
 //    Get all the login history records
@@ -31,10 +33,13 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(htmlentities($_POST['logout'])) {
+            print('I am logging out');
             unset($_SESSION['loggedin']);
             unset($_SESSION['username']);
+            $_SESSION = array();
             session_destroy();
             header('Location: /app');
+            exit();
         }
     }
 
