@@ -19,7 +19,33 @@
 
 
 //    Handler for saving edits in profile
-    if($_SERVER["REQUEST_METHOD"] == "POST") { }
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        extract($_POST, EXTR_PREFIX_ALL, 'post');
+
+        $post_first_name = addslashes(htmlentities($post_first_name));
+        $post_middle_name = addslashes(htmlentities($post_middle_name));
+        $post_last_name = addslashes(htmlentities($post_last_name));
+        $post_address = addslashes(htmlentities($post_address));
+        $post_barangay = addslashes(htmlentities($post_barangay));
+        $post_city = addslashes(htmlentities($post_city));
+        $post_province = addslashes(htmlentities($post_province));
+        $post_zip = addslashes(htmlentities($post_zip));
+        $post_gender = addslashes(htmlentities($post_gender));
+        $post_phone = addslashes(htmlentities($post_phone));
+
+
+	    $username = $_SESSION['username'];
+        $SQL_UPDATE = "UPDATE dhvsu_app.user SET first_name = '$post_first_name', middle_name = '$post_middle_name', last_name = '$post_last_name', address = '$post_address', barangay = '$post_barangay', city = '$post_city', province = '$post_province', zip = '$post_zip', gender = '$post_gender', phone = '$post_phone' WHERE username = '$username'";
+
+        $result = $connection->query($SQL_UPDATE);
+
+        if($result) {
+            header('Location: /app/profile.php');
+        } else {
+            echo $connection->error;
+        }
+
+    }
 
 
 
@@ -31,7 +57,7 @@
 	<div class="edit-form-container">
         <a href="/app/profile.php" class="back">< Back to profile</a>
         <h2>Edit Profile</h2>
-		<form action="">
+		<form action="" method="POST">
 			<label for="username">Email Address</label>
 			<input type="email" name="username" id="username" value="<?=$profile['username']?>" disabled>
 

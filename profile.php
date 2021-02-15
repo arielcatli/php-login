@@ -50,7 +50,7 @@
             <p class="label">Name</p>
             <p class="name"><?=$profile['first_name']?> <?=$profile['middle_name']?> <?=$profile['last_name']?></p>
             <p class="label">Address</p>
-            <p class="address"><?=$profile['address']?>, <?=$profile['city']?>, <?=$profile['province']?> <?=$profile['zip']?></p>
+            <p class="address"><?=$profile['address']?>, <?=$profile['barangay']?>, <?=$profile['city']?>, <?=$profile['province']?> <?=$profile['zip']?></p>
             <p class="label">Gender</p>
             <p class="gender"><?=$profile['gender'] == 'M' ? 'Male' : 'Female';?></p>
             <p class="label">Phone Number</p>
