@@ -30,7 +30,7 @@
            $write_result = $connection->query($SQL_ADD_TO_LOGIN_HISTORY);
 
            if($write_result) {
-	           header('Location: /app/profile.php');
+               header('Location: /app/profile.php');
 	           exit();
            } else {
                header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);

@@ -25,7 +25,7 @@
         $post_new_password = addslashes(htmlentities(($post_new_password)));
         $post_confirm_password = addslashes(htmlentities(($post_confirm_password)));
 
-        $SQL_NEW_PROFILE = "INSERT into dhvsu_app.user (username, password, first_name, middle_name, last_name, address, barangay, city, province, zip, gender, phone) VALUES ('$post_username', '$post_new_password', '$post_first_name', '$post_middle_name', '$post_last_name', '$post_address', '$post_barangay', '$post_city', '$post_province', '$post_zip', '$post_gender', '$post_phone')";
+        $SQL_NEW_PROFILE = "INSERT into dhvsu_app.user (username, password, first_name, middle_name, last_name, address, barangay, city, province, zip, gender, phone, role) VALUES ('$post_username', '$post_new_password', '$post_first_name', '$post_middle_name', '$post_last_name', '$post_address', '$post_barangay', '$post_city', '$post_province', '$post_zip', '$post_gender', '$post_phone', 'external')";
 
         $SQL_CHECK_EXIST_PROFILE = "SELECT * FROM dhvsu_app.user WHERE username = '$post_username'";
 
