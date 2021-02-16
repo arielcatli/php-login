@@ -35,7 +35,7 @@
 
 //    List of users for admin
     if($profile['role'] == 'administrator') {
-	    $SQL_GET_USERS = "SELECT dhvsu_app.user.first_name, dhvsu_app.user.middle_name, dhvsu_app.user.last_name FROM dhvsu_app.user WHERE dhvsu_app.user.role = 'external'";
+	    $SQL_GET_USERS = "SELECT dhvsu_app.user.first_name, dhvsu_app.user.middle_name, dhvsu_app.user.last_name, dhvsu_app.user.username FROM dhvsu_app.user WHERE dhvsu_app.user.role = 'external'";
 	    $user_result = $connection->query($SQL_GET_USERS);
 	    $users = array();
 
@@ -85,7 +85,7 @@
         <div class="user-list">
             <h2>List of Users (<?= count($users) ?>)</h2>
             <?php foreach($users as $user): ?>
-                <p class="user"><?=$user['first_name']?> <?=$user['middle_name']?> <?=$user['last_name']?></p>
+                <p class="user"><?=$user['first_name']?> <?=$user['middle_name']?> <?=$user['last_name']?> <br/> (<?=$user['username']?>)</p>
             <?php endforeach; ?>
         </div>
     <?php endif ?>
