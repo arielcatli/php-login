@@ -79,13 +79,14 @@
                 <button>Logout</button>
             </form>
             <button onclick="location.href = '/app/edit.php';">Edit Profile</button>
+            <button onclick="location.href = '/app/enrollment.php';">My Courses</button>
         </div>
     </div>
     <?php if($profile['role'] == 'administrator'): ?>
         <div class="user-list">
             <h2>List of Users (<?= count($users) ?>)</h2>
             <?php foreach($users as $user): ?>
-                <p class="user"><?=$user['first_name']?> <?=$user['middle_name']?> <?=$user['last_name']?> <br/> (<?=$user['username']?>)</p>
+                <p class="user"><span class="email"><?=$user['username']?></span><br /><?=$user['first_name']?> <?=$user['middle_name']?> <?=$user['last_name']?></p>
             <?php endforeach; ?>
         </div>
     <?php endif ?>

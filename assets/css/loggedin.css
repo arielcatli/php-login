@@ -124,7 +124,9 @@ p.label {
 }
 
 .profile-container button,
-.edit-form-container form button {
+.edit-form-container form button,
+.courses-available button,
+div.enrolled-courses button {
     text-transform: uppercase;
     background-color: orangered;
     color: white;
@@ -205,6 +207,58 @@ a.back:hover {
 
 p.user {
     padding: 10px 0px;
+}
+
+span.email {
+    color: darkorange;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+main.enrollment {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+}
+
+div.courses-available,
+div.enrolled-courses {
+    padding: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+
+.course-information {
+    padding: 30px;
+}
+
+.course-information p.course-name {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.course-information p.course-code {
+    font-size: 0.8rem;
+    color: orangered;
+}
+
+.courses span {
+    padding: 10px;
 }
 
 
