@@ -145,6 +145,7 @@ $debug_me = 'default';
 
 <main class="enrollment">
 <!--    --><?//=$debug_me?>
+    <a href="/app/profile.php" class="back">< Back to profile</a>
 	<div class="courses-available">
 		<form action="" method="POST">
 			<h2>Courses Available</h2>

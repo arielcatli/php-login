@@ -80,6 +80,9 @@
             </form>
             <button onclick="location.href = '/app/edit.php';">Edit Profile</button>
             <button onclick="location.href = '/app/enrollment.php';">My Courses</button>
+            <?php if($profile['role'] == 'administrator'): ?>
+                <button onclick="location.href = '/app/enrollment.php';">Edit Courses</button>
+            <?php endif; ?>
         </div>
     </div>
     <?php if($profile['role'] == 'administrator'): ?>
