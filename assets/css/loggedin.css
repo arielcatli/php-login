@@ -126,7 +126,9 @@ p.label {
 .profile-container button,
 .edit-form-container form button,
 .courses-available button,
-div.enrolled-courses button {
+div.enrolled-courses button,
+main.edit-course button,
+main.add-course button {
     text-transform: uppercase;
     background-color: orangered;
     color: white;
@@ -164,7 +166,8 @@ main.edit {
 }
 
 .edit-form-container form input,
-.edit-form-container form select {
+.edit-form-container form select,
+main.edit-course input{
     padding: 10px;
     outline: none;
     border: 1px solid gray;
@@ -260,6 +263,38 @@ li {
 .courses span {
     padding: 10px;
 }
+
+main.edit-course {
+    width: 50%;
+    height: 100vh;
+}
+
+main.edit-course .edit-course-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.edit-course-form label{
+    font-size: 1.2rem;
+    color: orangered;
+    padding: 10px 0px 5px 0px;
+}
+
+.edit-course-form input{
+
+}
+
+main.edit-courses {
+    height: 100vh;
+
+}
+
+.courses-available button {
+    width: 200px;
+}
+
+
 
 
 
